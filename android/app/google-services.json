@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "926750057177",
+    "firebase_url": "https://proyectocacao-a258b-default-rtdb.firebaseio.com",
+    "project_id": "proyectocacao-a258b",
+    "storage_bucket": "proyectocacao-a258b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926750057177:android:bbfeaca262f37dc5c514c8",
+        "android_client_info": {
+          "package_name": "com.example.app_12"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzWmsbuVai_sygtNbp_Mb_-6zBejI-v04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
