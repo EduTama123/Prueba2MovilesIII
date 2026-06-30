@@ -1,10 +1,9 @@
-import 'package:app_12/screens/DetallesScreen.dart';
-import 'package:app_12/screens/GuardarScreen.dart';
-import 'package:app_12/screens/LeerScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:app_12/screens/WelcomeScreen.dart';
 import 'package:app_12/screens/LoginScreen.dart';
 import 'package:app_12/screens/RegistroScreen.dart';
-import 'package:app_12/screens/WelcomeScreen.dart';
-import 'package:flutter/material.dart';
+import 'package:app_12/screens/CitasScreen.dart';
+import 'package:app_12/screens/ServiciosScreen.dart';
 
 //firebase
 import 'package:firebase_core/firebase_core.dart';
@@ -25,14 +24,13 @@ class AppFire extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      initialRoute: "/guardar",
+      initialRoute: "/",
       routes: {
-        "/": (context) => Welcomescreen(),
-        "/login": (context) => Loginscreen(),
-        "/registro": (context) => Registroscreen(),
-        "/guardar": (context) => Guardarscreen(),
-        "/leer": (context) => Leerscreen(),
-        "/detalles": (context) => Detallesscreen()
+        "/": (context) => const WelcomeScreen(),
+        "/login": (context) => const LoginScreen(),
+        "/registro": (context) => const RegistroScreen(),
+        "/citas": (context) => const CitasScreen(),
+        "/servicios": (context) => const ServiciosScreen(),
       },
     );
   }
