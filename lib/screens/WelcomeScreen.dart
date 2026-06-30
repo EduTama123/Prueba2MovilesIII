@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Sistema de Citas Médicas',
               style: TextStyle(
                 fontSize: 28,
@@ -20,38 +20,38 @@ class WelcomeScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 10),
-            const Text(
+            SizedBox(height: 10),
+            Text(
               'Tu salud es nuestra prioridad',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white70,
               ),
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: 50),
             FilledButton(
               onPressed: () => Navigator.pushNamed(context, "/login"),
               style: FilledButton.styleFrom(
-                minimumSize: const Size(200, 50),
+                minimumSize: Size(200, 50),
               ),
-              child: const Text(
+              child: Text(
                 'Iniciar Sesión',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15),
             OutlinedButton(
               onPressed: () => Navigator.pushNamed(context, "/registro"),
               style: OutlinedButton.styleFrom(
-                minimumSize: const Size(200, 50),
+                minimumSize: Size(200, 50),
               ),
-              child: const Text(
+              child: Text(
                 'Registrarse',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 50),
-            const Text(
+            SizedBox(height: 50),
+            Text(
               'Desarrollador: Eduardo Tamayo\nGitHub: EduTama123',
               style: TextStyle(
                 color: Colors.white60,
