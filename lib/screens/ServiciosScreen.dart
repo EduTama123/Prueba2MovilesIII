@@ -7,13 +7,12 @@ class ServiciosScreen extends StatelessWidget {
   const ServiciosScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Servicios Médicos',
-            style: TextStyle(color: Colors.white)),
+        title: Text('Servicios Médicos', style: TextStyle(color: Colors.white)),
       ),
       body: FutureBuilder(
         future: leer(),
@@ -26,7 +25,7 @@ class ServiciosScreen extends StatelessWidget {
                 final item = data[index];
                 return Card(
                   color: Colors.grey[900],
-                  margin: const EdgeInsets.all(8.0),
+                  margin: EdgeInsets.all(8.0),
                   child: ListTile(
                     onTap: () => verDetalles(context, item),
                     leading: Image.network(
@@ -35,11 +34,11 @@ class ServiciosScreen extends StatelessWidget {
                       height: 50,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) =>
-                          const Icon(Icons.error, color: Colors.white),
+                          Icon(Icons.error, color: Colors.white),
                     ),
                     title: Text(
                       item['nombre'],
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Column(
@@ -47,7 +46,7 @@ class ServiciosScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Horario: ${item['horario']}',
-                          style: const TextStyle(color: Colors.white70),
+                          style: TextStyle(color: Colors.white70),
                         ),
                       ],
                     ),
@@ -56,7 +55,7 @@ class ServiciosScreen extends StatelessWidget {
               },
             );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           }
         },
       ),
@@ -73,14 +72,14 @@ class ServiciosScreen extends StatelessWidget {
   }
 
   //funcion para ver detalle del servicio
-  void verDetalles(BuildContext context, Map<String, dynamic> item) {
+  void verDetalles(context, Map<String, dynamic> item) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: Colors.grey[900],
         title: Text(
           item['nombre'],
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
         ),
         content: SizedBox(
           width: 300,
@@ -88,29 +87,29 @@ class ServiciosScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               Text(
                 'Descripción: ${item['descripcion']}',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
               const SizedBox(height: 5),
               Text(
                 'Teléfono: ${item['contacto']['telefono']}',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: 5),
               Text(
                 'Email: ${item['contacto']['email']}',
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: 5),
             ],
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cerrar', style: TextStyle(color: Colors.red)),
+            child: Text('Cerrar', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),

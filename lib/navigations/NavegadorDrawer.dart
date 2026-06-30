@@ -33,16 +33,16 @@ class NavegadorDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.calendar_today),
-            title: const Text('Crear Cita'),
+            leading: Icon(Icons.calendar_today),
+            title: Text('Crear Cita'),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, "/citas");
             },
           ),
           ListTile(
-            leading: const Icon(Icons.medical_services),
-            title: const Text('Servicios'),
+            leading: Icon(Icons.medical_services),
+            title: Text('Servicios'),
             onTap: () {
               Navigator.pop(context);
               Navigator.pushReplacementNamed(context, "/servicios");

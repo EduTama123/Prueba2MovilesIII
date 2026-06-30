@@ -5,13 +5,12 @@ class RegistroScreen extends StatelessWidget {
   const RegistroScreen({super.key});
 
   @override
-  Widget build(context) {
+  Widget build( context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Registro de Usuario',
-            style: TextStyle(color: Colors.white)),
+        title: Text('Registro de Usuario', style: TextStyle(color: Colors.white)),
       ),
       body: Center(
         child: SizedBox(
@@ -23,7 +22,7 @@ class RegistroScreen extends StatelessWidget {
   }
 }
 
-Widget formularioRegistro(context) {
+Widget formularioRegistro( context) {
   TextEditingController correo = TextEditingController();
   TextEditingController contrasenia = TextEditingController();
 
@@ -32,57 +31,69 @@ Widget formularioRegistro(context) {
     children: [
       TextField(
         controller: correo,
-        style: const TextStyle(color: Colors.white),
-        decoration: const InputDecoration(
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
           labelText: 'Correo Electrónico',
           labelStyle: TextStyle(color: Colors.white70),
           border: OutlineInputBorder(),
         ),
         keyboardType: TextInputType.emailAddress,
       ),
-      const SizedBox(height: 10),
+     SizedBox(height: 10),
       TextField(
         controller: contrasenia,
         obscureText: true,
-        style: const TextStyle(color: Colors.white),
-        decoration: const InputDecoration(
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
           labelText: 'Contraseña',
           labelStyle: TextStyle(color: Colors.white70),
           border: OutlineInputBorder(),
         ),
       ),
-      const SizedBox(height: 20),
+     SizedBox(height: 20),
       FilledButton.icon(
         onPressed: () => registro(context, correo, contrasenia),
-        label: const Text('Registrarse'),
-        icon: const Icon(Icons.app_registration),
+        label: Text('Registrarse'),
+        icon: Icon(Icons.app_registration),
       ),
     ],
   );
 }
 
-Future<void> registro(correo, contrasenia, context) async {
+Future<void> registro( context, correo, contrasenia) async {
   try {
-    final credential =
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: correo.text,
       password: contrasenia.text,
     );
-    Navigator.pushNamed(context, "/guardar");
+    Navigator.pushReplacementNamed(context, "/login");
   } on FirebaseAuthException catch (e) {
+    String mensaje = '';
     if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
+      mensaje = 'La contraseña es muy débil (mínimo 6 caracteres)';
     } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
-
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                title: Text("ERROR"),
-                content: Text("El correo ya esta en uso"),
-              ));
+      mensaje = 'Este correo ya está registrado';
+    } else {
+      mensaje = 'Error al registrarse: ${e.message}';
     }
+    mostrarAlerta(context, 'Error de Registro', mensaje);
   } catch (e) {
-    print(e);
+    mostrarAlerta(context, 'Error', 'Ocurrió un error inesperado');
   }
+}
+
+void mostrarAlerta( context, titulo, mensaje) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(titulo),
+      content: Text(mensaje),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text('Aceptar'),
+        ),
+      ],
+    ),
+  );
 }
